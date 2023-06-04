@@ -1,0 +1,35 @@
+<%- include('layout') %>
+
+/* <Ivan Prikhodko 301261209 COMP229_402> */ 
+
+<h2>Contact Me</h2>
+
+<div class="contact-info">
+  <p>Phone: 367-380-5910</p>
+  <p>Email: ivanp@example.com</p>
+</div>
+
+<form action="/" method="POST">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" required>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" required>
+  </div>
+  <div class="form-group">
+    <label for="contactNumber">Contact Number</label>
+    <input type="text" id="contactNumber" name="contactNumber" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+  <a href="/" class="btn">Submit</a>
+</form>
+
