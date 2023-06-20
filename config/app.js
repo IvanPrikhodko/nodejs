@@ -16,8 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/css', express.static(path.join(__dirname, '../public/css')));
-app.use('/resume', express.static(__dirname + '../public/resume'));
-app.use('/img', express.static(__dirname + '../public/img'));
+app.use('/resume', express.static(__dirname + '/../public/resume'));
+app.use('/img', express.static(__dirname + '/../public/img'));
+app.set('views', path.join(__dirname, '../views'));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use('/', router);
