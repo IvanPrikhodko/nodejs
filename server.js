@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
@@ -7,6 +5,8 @@
 var app = require('./config/app');
 var debug = require('debug')('week-4:server');
 var http = require('http');
+require('events').EventEmitter.defaultMaxListeners = 15;
+
 
 /**
  * Normalize a port into a number, string, or false.

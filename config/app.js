@@ -1,12 +1,19 @@
-// installed 3rd party packages
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let router = require('../routes/index');
+const { connect } = require('../models/db');
 
 let app = express();
+app.use(express.urlencoded({ extended: false }));
+
+// Connect to MongoDB
+connect().catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -37,8 +44,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { title: 'Error'});
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
-

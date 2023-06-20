@@ -1,0 +1,28 @@
+
+<%- include('layout') %>
+
+
+<% if (contacts && contacts.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Contact Name</th>
+        <th>Contact Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach(contact => { %>
+        <tr>
+          <td><%= contact['Contact Name'] %></td>
+          <td><%= contact['Contact Number'] %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>No contacts found.</p>
+<% } %>
+
+
+
+
