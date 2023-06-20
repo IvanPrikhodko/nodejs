@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use('/css', express.static(path.join(__dirname, '../public/css')));
 app.use('/resume', express.static(__dirname + '/../public/resume'));
 app.use('/img', express.static(__dirname + '/../public/img'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use('/', router);
