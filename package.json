@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node ./server.js"
   },
+  "engines": {
+    "node": "^20.00.0",
+    "npm": "^9.0.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.6.2",
