@@ -29,11 +29,21 @@ router.get('/contact', (req, res) => {
 
 // Login page route
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { errorMessage: undefined });
 });
 
-router.post('/login', (req, res) => {
-  res.render('login');
+
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Add your authentication logic here
+  if (username === 'admin' && password === 'password') {
+    // Successful login, redirect to contactlist
+    res.redirect('/contactlist');
+  } else {
+    // Unsuccessful login, display error message
+    res.render('login', { errorMessage: 'Invalid username or password.' });
+  }
 });
 
 // Contact list page route

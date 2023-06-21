@@ -8,12 +8,16 @@ var http = require('http');
 require('events').EventEmitter.defaultMaxListeners = 15;
 
 
+
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
+
 
   if (isNaN(port)) {
     // named pipe
@@ -34,12 +38,19 @@ function normalizePort(val) {
 
 var server = http.createServer(app);
 
+
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+
+
+
+
+
 
 /**
  * Listen on provided port, on all network interfaces.
