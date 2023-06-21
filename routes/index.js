@@ -36,7 +36,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
-  // Add your authentication logic here
+  // Authentication logic here
   if (username === 'admin' && password === 'password') {
     // Successful login, redirect to contactlist
     res.redirect('/contactlist');
