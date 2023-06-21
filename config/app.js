@@ -4,16 +4,22 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let router = require('../routes/index');
-const { connect } = require('../models/db');
+const mongoose = require('mongoose');
+const Contact = require('../models/db');
 
 let app = express();
 app.use(express.urlencoded({ extended: false }));
 
 // Connect to MongoDB
-connect().catch(error => {
-  console.error(error);
+ mongoose.connect('mongodb+srv://ivan:ivanpassword@comp229cluster.5wsntz4.mongodb.net/contacts_book?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
   process.exit(1);
-});
+}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -30,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use('/', router);
+app.use('/contatlist', router); // Add this line to register the /contatlist route
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

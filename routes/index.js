@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../models/db');
+const Contact = require('../models/db');
 
 // Home page route
 router.get('/', (req, res) => {
@@ -36,18 +36,20 @@ router.post('/login', (req, res) => {
   res.render('login');
 });
 
-
 // Contact list page route
 router.get('/contactlist', async (req, res) => {
-    try {
-      await db.connect(); // Establish the database connection
-      const contacts = await db.getContacts(); // Retrieve contacts
-      console.log(contacts);
-      res.render('contactlist', { contacts: contacts });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
+  try {
+    // Fetch the contacts from the "contacts" collection
+    const contacts = await Contact.find();
+    console.log('contacts', contacts);
+    res.render('contactlist', { contacts: contacts.map(contact => ({
+        ...contact._doc
+
+    }))});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 module.exports = router;

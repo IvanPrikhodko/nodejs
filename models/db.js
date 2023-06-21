@@ -1,27 +1,16 @@
 const mongoose = require('mongoose');
 
-// Define the Contact schema
+// Define the schema for the "contacts" collection
 const contactSchema = new mongoose.Schema({
-  contactName: String,
-  contactNumber: String,
-  emailAddress: String
+  // Define the fields and their types in your "contacts" collection
+  firstName: String,
+  lastName: String,
+  email: String,
+  phone: String,
 });
 
-// Create the Contact model
-const Contact = mongoose.model('Contact', contactSchema);
+// Create a model from the schema
+const Contact = mongoose.model('contacts', contactSchema);
 
-const uri = "mongodb+srv://ivan:ivanpassword@comp229cluster.5wsntz4.mongodb.net/?retryWrites=true&w=majority";
-const timeout = 5000;
-
-async function connect() {
-  try {
-    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    throw error;
-  }
-}
-
-
-module.exports = { connect };
+// Export the Contact model
+module.exports = Contact;
